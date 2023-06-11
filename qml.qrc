@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>loadingAnimation.qml</file>
+    </qresource>
+</RCC>
