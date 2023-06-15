@@ -7,7 +7,7 @@ Rectangle {
     Text{
         id: subText
         color: "#22ff00"
-        text: qsTr("Hello World!")
+        text: qsTr("Child Process Started!")
         anchors.centerIn: parent
         font.pixelSize: 60
         font.bold: true
