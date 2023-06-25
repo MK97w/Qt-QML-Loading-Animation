@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "process_handler.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

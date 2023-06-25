@@ -38,7 +38,8 @@ void process_handler::errorOccurred(QProcess::ProcessError error)
 {
     if(!m_listening) return;
     qInfo() << Q_FUNC_INFO << error;
-    emit output("Error");
+    //emit output("Error");
+    qDebug()<<"Error";
 }
 
 void process_handler::finished(int exitCode, QProcess::ExitStatus exitStatus)
@@ -47,7 +48,8 @@ void process_handler::finished(int exitCode, QProcess::ExitStatus exitStatus)
     qInfo() << Q_FUNC_INFO;
     Q_UNUSED(exitCode);
     Q_UNUSED(exitStatus);
-    emit output("Complete");
+    //emit output("Complete");
+    qDebug()<<"Complete";
 }
 
 void process_handler::readyReadStandardError()
@@ -57,7 +59,8 @@ void process_handler::readyReadStandardError()
    QByteArray data =  m_process.readAllStandardError();
    QString message = "Standard Error: ";
    message.append(m_process.readAllStandardError());
-   emit output(message);
+   //emit output(message);
+   qDebug()<<message;
 }
 
 void process_handler::readyReadStandardOutput()
@@ -65,7 +68,8 @@ void process_handler::readyReadStandardOutput()
     if(!m_listening) return;
     qInfo() << Q_FUNC_INFO;
     QByteArray data =  m_process.readAllStandardOutput();
-    emit output(QString(data.trimmed()));
+    //emit output(QString(data.trimmed()));
+    qDebug()<<data.trimmed();
 }
 
 void process_handler::started()
@@ -79,13 +83,13 @@ void process_handler::stateChanged(QProcess::ProcessState newState)
     qInfo() << Q_FUNC_INFO;
     switch (newState) {
     case QProcess::NotRunning:
-        emit output("Not running");
+       //emit output("Not running");
         break;
     case QProcess::Starting:
-        emit output("Starting...");
+        //emit output("Starting...");
         break;
     case QProcess::Running:
-        emit output("Running");
+        //emit output("Running");
         //Start the ping
         startPing();
         break;
@@ -98,7 +102,7 @@ void process_handler::readyRead()
     qInfo() << Q_FUNC_INFO;
     QByteArray data = m_process.readAll().trimmed();
     qInfo() << data;
-    emit output(data);
+    //emit output(data);
 }
 
 QString process_handler::getProcess()
@@ -113,7 +117,7 @@ QString process_handler::getProcess()
 void process_handler::startPing()
 {
     QByteArray command;
-    command.append("ping " + m_address);
+   // command.append("ping " + m_address);
     if(QSysInfo::productType() == "windows") command.append("\r");
     command.append("\n");
     m_process.write(command);
