@@ -11,11 +11,11 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    process_handler.cpp
+    #process_handler.cpp
 
 HEADERS += \
     mainwindow.h \
-    process_handler.h
+    #process_handler.h
 
 FORMS += \
     mainwindow.ui
