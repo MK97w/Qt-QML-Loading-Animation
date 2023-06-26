@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->quickWidget->setSource(QUrl("qrc:/loadingAnimation.qml"));
+    ui->quickWidget->setClearColor(Qt::transparent);
+    ui->quickWidget->setAttribute(Qt::WA_AlwaysStackOnTop);
     ui->quickWidget->hide();
 }
 
